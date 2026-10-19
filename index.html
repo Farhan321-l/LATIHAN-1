@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profil Keluarga bapak arif </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF3EF; --surface:#FFFFFF; --ink:#17211E; --muted:#58675F;
+    --forest:#1F3D36; --gold:#E0A526; --line:#CBD8D0;
+    --head:'Bricolage Grotesque','Trebuchet MS',sans-serif;
+    --body:'Public Sans','Segoe UI',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:17px}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+  /* Navigasi */
+  nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;gap:24px;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+  nav strong{font-family:var(--head);font-size:1.1rem}
+  nav ul{display:flex;gap:20px;list-style:none;font-size:.95rem;font-weight:500}
+  nav a{text-decoration:none;color:var(--muted)}
+  nav a:hover{color:var(--forest)}
+
+  /* Hero */
+  .hero{background:var(--forest);color:#F2F6F3;padding:88px 0 72px}
+  .hero h1{font-family:var(--head);font-weight:800;font-size:clamp(3rem,10vw,7rem);line-height:.95;letter-spacing:-.03em}
+  .hero p{max-width:34em;margin-top:24px;font-size:1.15rem;color:#C9D8D0}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .hero .meta span{border:1.5px solid var(--gold);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:.92rem;font-weight:500}
+
+  section{padding:72px 0}
+  h2{font-family:var(--head);font-weight:700;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;margin-bottom:8px}
+  .lead{color:var(--muted);margin-bottom:36px;max-width:36em}
+
+  /* Anggota */
+  .members{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .member{background:var(--surface);border-radius:18px;padding:24px;border:1px solid var(--line)}
+  .avatar{width:84px;height:84px;border-radius:50%;background:var(--forest);color:var(--gold);display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:1.9rem;margin-bottom:16px;overflow:hidden}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .member h3{font-family:var(--head);font-size:1.25rem}
+  .role{color:var(--forest);font-weight:600;font-size:.95rem}
+  .member dl{margin-top:12px;font-size:.93rem;color:var(--muted)}
+  .member dt{float:left;clear:left;width:76px;font-weight:600;color:var(--ink)}
+
+  /* Alamat */
+  #alamat{background:var(--surface);border-block:1px solid var(--line)}
+  .addr{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
+  address{font-style:normal;font-size:1.2rem;line-height:1.7;border-left:6px solid var(--gold);padding-left:20px}
+  address b{font-family:var(--head);font-size:1.4rem}
+  .info{display:grid;gap:14px}
+  .info div{background:var(--bg);border-radius:14px;padding:16px 20px}
+  .info small{color:var(--muted);display:block;font-size:.85rem}
+  .btn{display:inline-block;margin-top:24px;background:var(--forest);color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:600}
+  .btn:hover{background:#2B544A}
+
+  /* Riwayat sekolah */
+  .tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+  .tabs button{font:inherit;font-weight:600;font-size:.95rem;padding:10px 20px;border-radius:99px;border:1.5px solid var(--forest);background:transparent;color:var(--forest);cursor:pointer}
+  .tabs button[aria-selected="true"]{background:var(--forest);color:#fff}
+  .panel[hidden]{display:none}
+  .timeline{list-style:none;position:relative;padding-left:32px}
+  .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:3px;background:var(--line)}
+  .timeline li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:16px}
+  .timeline li::before{content:"";position:absolute;left:-32px;top:24px;width:17px;height:17px;border-radius:50%;background:var(--gold);border:3px solid var(--bg)}
+  .timeline .year{font-weight:600;color:var(--forest);font-size:.9rem}
+  .timeline h3{font-family:var(--head);font-size:1.15rem}
+  .timeline p{color:var(--muted);font-size:.95rem}
+
+  footer{background:var(--forest);color:#C9D8D0;padding:32px 0;text-align:center;font-size:.92rem}
+
+  @media (max-width:760px){
+    nav ul{display:none}
+    .addr{grid-template-columns:1fr}
+    .hero{padding:64px 0 52px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <strong>Keluarga bapak arif</strong>
+    <ul>
+      <li><a href="#anggota">Anggota</a></li>
+      <li><a href="#alamat">Alamat</a></li>
+      <li><a href="#sekolah">Riwayat sekolah</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Keluarga<br>Bapak arif</h1>
+    <p>Kami keluarga kecil yang tinggal di Majalengka. Halaman ini memuat anggota keluarga, alamat rumah, dan perjalanan pendidikan kami.</p>
+    <div class="meta">
+      <span>4 anggota</span>
+      <span>Sejak 2005</span>
+      <span>Majalengka, Jawa Barat</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ANGGOTA KELUARGA -->
+  <section id="anggota">
+    <div class="wrap">
+      <h2>Anggota keluarga</h2>
+      <p class="lead">Berikut adalah anggota keluarga bapak arif.</p>
+      <div class="members">
+        <article class="member">
+          <div class="avatar">B</div>
+          <h3>Arif hidayat</h3>
+          <p class="role">Ayah</p>
+          <dl><dt>Lahir</dt><dd>4 Maret 1979</dd><dt>Pekerjaan</dt><dd>Wiraswasta</dd></dl>
+        </article>
+        <article class="member">
+          <div class="avatar">S</div>
+          <h3>Husnul khotimah</h3>
+          <p class="role">Ibu</p>
+          <dl><dt>Lahir</dt><dd>10 Agustus 1986</dd><dt>Pekerjaan</dt><dd>Ibu rumah tangga</dd></dl>
+        </article>
+        <article class="member">
+          <div class="avatar">A</div>
+          <h3>Muhamad Farhan Shofiyudin</h3>
+          <p class="role">Anak pertama</p>
+          <dl><dt>Lahir</dt><dd>19 Februari 2007</dd><dt>Pekerjaan</dt><dd>Mahasiswa</dd></dl>
+        </article>
+        <article class="member">
+          <div class="avatar">D</div>
+          <h3>Muhamad Fahreza zafran</h3>
+          <p class="role">Anak kedua</p>
+          <dl><dt>Lahir</dt><dd>9 Oktober 2022</dd><dt>Pekerjaan</dt><dd>ngome hp</dd></dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALAMAT RUMAH -->
+  <section id="alamat">
+    <div class="wrap">
+      <h2>Alamat rumah</h2>
+      <p class="lead">Rumah keluarga kami berada di lingkungan yang tenang dan mudah dijangkau.</p>
+      <div class="addr">
+        <div>
+          <address>
+            <b>Rumah Keluarga bapak arif</b><br>
+            Jl. talaga No. 12, RT 03 / RW 05<br>
+            Desa talaga, Kecamatan Majalengka<br>
+            Kabupaten Majalengka, Jawa Barat 45411<br>
+            Indonesia
+          </address>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Majalengka+Jawa+Barat" target="_blank" rel="noopener">Buka di Google Maps</a>
+        </div>
+        <div class="info">
+          <div><small>Telepon / WhatsApp</small>0895322222686</div>
+          <div><small>Email</small>keluarga.arif@email.com</div>
+          <div><small>Patokan</small>Depan warung sembako Uminya biya</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIWAYAT SEKOLAH -->
+  <section id="sekolah">
+    <div class="wrap">
+      <h2>Riwayat sekolah</h2>
+      <p class="lead">Pilih nama anggota keluarga untuk melihat riwayat pendidikannya.</p>
+
+      <div class="tabs" role="tablist" aria-label="Pilih anggota keluarga">
+        <button role="tab" aria-selected="true" aria-controls="p-ayah" id="t-ayah">Arif (Ayah)</button>
+        <button role="tab" aria-selected="false" aria-controls="p-ibu" id="t-ibu">Ayu (Ibu)</button>
+        <button role="tab" aria-selected="false" aria-controls="p-Farhan" id="t-Farhan">Farhan</button>
+        <button role="tab" aria-selected="false" aria-controls="p-Fahreza" id="t-Fahreza">Fahreza</button>
+      </div>
+
+     <div class="panel" role="tabpanel" id="p-ayah" aria-labelledby="t-ayah">
+  <ol class="timeline">
+    <li><span class="year">1981 – 1987</span><h3>SD Negeri 1 Talaga</h3><p>Sekolah Dasar</p></li>
+    <li><span class="year">1987 – 1990</span><h3>SMP Negeri 1 Talaga</h3><p>Sekolah Menengah Pertama</p></li>
+  </ol>
+</div>
+
+      <div class="panel" role="tabpanel" id="p-ibu" aria-labelledby="t-ibu" hidden>
+        <ol class="timeline">
+          <li><span class="year">1984 – 1990</span><h3>SD Negeri 2 Kadipaten</h3><p>Sekolah Dasar</p></li>
+          <li><span class="year">1990 – 1993</span><h3>SMP Negeri 2 Kadipaten</h3><p>Sekolah Menengah Pertama</p></li>
+          <li><span class="year">1993 – 1996</span><h3>SPG Negeri Talaga</h3><p>Sekolah Pendidikan Guru</p></li>
+          <li><span class="year">1996 – 2000</span><h3>IKIP Bandung</h3><p>S1 Pendidikan Guru Sekolah Dasar</p></li>
+        </ol>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-Farhan" aria-labelledby="t-Farhan" hidden>
+        <ol class="timeline">
+          <li><span class="year">2008 – 2014</span><h3>SD Negeri 1 Sukamaju</h3><p>Lulus dengan peringkat 3 besar</p></li>
+          <li><span class="year">2014 – 2017</span><h3>SMP Negeri 1 Majalengka</h3><p>Anggota OSIS</p></li>
+          <li><span class="year">2017 – 2020</span><h3>SMA Negeri 1 Majalengka</h3><p>Jurusan IPA</p></li>
+          <li><span class="year">2020 – sekarang</span><h3>Institut Teknologi Bandung</h3><p>S1 Teknik Informatika</p></li>
+        </ol>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-Fahreza" aria-labelledby="t-Fahreza" hidden>
+        <ol class="timeline">
+          <li><span class="year">2014 – 2020</span><h3>SD Negeri 1 Sukamaju</h3><p>Sekolah Dasar</p></li>
+          <li><span class="year">2020 – 2023</span><h3>SMP Negeri 2 Majalengka</h3><p>Juara 1 lomba pidato tingkat kabupaten</p></li>
+          <li><span class="year">2023 – sekarang</span><h3>SMA Negeri 1 Majalengka</h3><p>Kelas XII, jurusan IPA</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Keluarga Arif hidayat.</div>
+</footer>
+
+<script>
+  // Tab riwayat sekolah
+  const tabs = document.querySelectorAll('[role="tab"]');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        const aktif = t === tab;
+        t.setAttribute('aria-selected', aktif);
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !aktif;
+      });
+    });
+  });
+</script>
+</body>
+</html>
